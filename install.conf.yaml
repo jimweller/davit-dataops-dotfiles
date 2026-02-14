@@ -1,0 +1,26 @@
+- defaults:
+    link:
+      force: true
+      create: true
+      relink: true
+
+- create:
+    - ~/.secrets
+    - ~/.ssh
+    - ~/.claude
+    - ~/.claude/plugins
+    - ~/.claude/skills
+
+- link:
+    ~/.bashrc: bashrc
+    ~/.gitconfig: gitconfig
+    ~/dataops-plugin.env: dataops-plugin.env
+    ~/.claude.json: claude-code/claude_json
+    ~/.claude/settings.json: claude-code/claude_settings_json_azure
+    ~/.claude/CLAUDE.md: claude-code/CLAUDE.md
+    ~/.claude/statusline-command.sh: claude-code/statusline-command.sh
+    ~/.claude/plugins/known_marketplaces.json: claude-code/known_marketplaces.json
+    ~/.claude/plugins/installed_plugins.json: claude-code/installed_plugins.json
+    ~/.claude/skills/:
+      glob: true
+      path: claude-code/skills/*

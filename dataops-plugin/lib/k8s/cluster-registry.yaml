@@ -1,0 +1,125 @@
+# Shipped cluster registry for k8s-steampipe skill
+#
+# Users override these by creating ~/.dataops-assistant/k8s-clusters.yaml
+# with the same anchor name and their own obtain/override commands.
+#
+# Each cluster has:
+#   - anchor: unique identifier used in queries (e.g., k8s_<anchor>.<table>)
+#   - kubeconfig.obtain: command that outputs kubeconfig YAML to stdout
+#   - kubeconfig.override: patches to apply (e.g., inject exec auth)
+#   - metadata: description, keywords for discoverability
+
+clusters:
+  # --- AWS EKS Clusters ---
+  # obtain commands write kubeconfig YAML to stdout
+
+  - anchor: dss-eks-platform-dev
+    kubeconfig:
+      obtain: [aws-vault, exec, mcg_dev_dev_access, --, aws, eks, update-kubeconfig, --name, dss-eks-platform-dev, --region, us-west-2, --kubeconfig, /dev/null, --dry-run]
+      override:
+        users:
+          - name: arn:aws:eks:us-west-2:159625199976:cluster/dss-eks-platform-dev
+            user:
+              exec:
+                apiVersion: client.authentication.k8s.io/v1beta1
+                command: aws-vault
+                args: [exec, mcg_dev_dev_access, --, aws, eks, get-token, --region, us-west-2, --cluster-name, dss-eks-platform-dev, --output, json]
+    metadata:
+      description: "Development workloads in AWS. Preferred for most things."
+      keywords: [dev, development]
+      provider: aws
+      region: us-west-2
+      cluster_name: dss-eks-platform-dev
+      account_id: "159625199976"
+
+  - anchor: dss-eks-platform-prod
+    kubeconfig:
+      # User must override obtain with their aws-vault profile for prod access
+      obtain: [echo, "ERROR: Configure obtain in ~/.dataops-assistant/k8s-clusters.yaml with your prod aws-vault profile"]
+      override: {}
+    metadata:
+      description: "Production workloads in AWS. Use when Azure connectivity not required."
+      keywords: [prod, production]
+      provider: aws
+      region: us-west-2
+      cluster_name: dss-eks-platform-prod
+      account_id: "492132060394"
+
+  # --- Azure AKS Clusters ---
+  # obtain commands write kubeconfig YAML to stdout
+
+  - anchor: dev-experiment-cluster
+    kubeconfig:
+      obtain: [az, aks, get-credentials, --name, dev-experiment-clustertytcfeuqmvm2bhqh, --resource-group, HRM-datascience-dev-rg, --subscription, MCG_DEV, --file, -]
+      override:
+        users:
+          - name: clusterUser_HRM-datascience-dev-rg_dev-experiment-clustertytcfeuqmvm2bhqh
+            user:
+              exec:
+                apiVersion: client.authentication.k8s.io/v1beta1
+                command: kubelogin
+                args: [get-token, --environment, AzurePublicCloud, --server-id, 6dae42f8-4368-4678-94ff-3960e28e3630, --client-id, 80faf920-1908-4b52-b5ef-a8e7bedfc67a, --tenant-id, a84894e7-87c5-40e3-9783-320d0334b3cc, --login, azurecli]
+    metadata:
+      description: "Development workloads in Azure (due to connectivity requirements)."
+      keywords: [dev, development, azure, datascience, aks]
+      provider: azure
+      region: westus2
+      resource_group: HRM-datascience-dev-rg
+      subscription: "98e9a6c7-c9c0-4419-bd65-2b18c741a0f4"
+
+  - anchor: stage-experiment-cluster
+    kubeconfig:
+      obtain: [az, aks, get-credentials, --name, dss-stage-experiment-cluster87e8ba73pwc6t9yo, --resource-group, HRM-datascience-stage-rg, --subscription, MCG_STAGE, --file, -]
+      override:
+        users:
+          - name: clusterUser_HRM-datascience-stage-rg_dss-stage-experiment-cluster87e8ba73pwc6t9yo
+            user:
+              exec:
+                apiVersion: client.authentication.k8s.io/v1beta1
+                command: kubelogin
+                args: [get-token, --environment, AzurePublicCloud, --server-id, 6dae42f8-4368-4678-94ff-3960e28e3630, --client-id, 80faf920-1908-4b52-b5ef-a8e7bedfc67a, --tenant-id, a84894e7-87c5-40e3-9783-320d0334b3cc, --login, azurecli]
+    metadata:
+      description: "Internal-only staging workloads in Azure (may contain PHI/PII)."
+      keywords: [stage, staging, azure, sensitive, aks]
+      provider: azure
+      region: westus2
+      resource_group: HRM-datascience-stage-rg
+      subscription: "1fe1fcf9-516d-4dc3-b3d9-b4e518b83838"
+
+  - anchor: datascience-primary-cluster
+    kubeconfig:
+      obtain: [az, aks, get-credentials, --name, tfv69qrbokiz6o57, --resource-group, 9jw4xh, --subscription, mcg-azr-enh-app-datasci-nprod, --file, -]
+      override:
+        users:
+          - name: clusterUser_9jw4xh_tfv69qrbokiz6o57
+            user:
+              exec:
+                apiVersion: client.authentication.k8s.io/v1beta1
+                command: kubelogin
+                args: [get-token, --environment, AzurePublicCloud, --server-id, 6dae42f8-4368-4678-94ff-3960e28e3630, --client-id, 80faf920-1908-4b52-b5ef-a8e7bedfc67a, --tenant-id, a84894e7-87c5-40e3-9783-320d0334b3cc, --login, azurecli]
+    metadata:
+      description: "Internal-only datascience team workloads in Azure (may contain PHI/PII). Primary for Flyte."
+      keywords: [prod, production, datascience, flyte, azure, aks]
+      provider: azure
+      region: westus2
+      resource_group: 9jw4xh
+      subscription: "0df47e43-b9bc-45ab-83e8-e1e73b7790cf"
+
+  - anchor: mathom-primary-cluster
+    kubeconfig:
+      obtain: [az, aks, get-credentials, --name, ghug5zn2qxcd6uuc, --resource-group, mm1st28n5mwxajfy, --subscription, mcg-azr-enh-app-mathomcommon-prod, --file, -]
+      override:
+        users:
+          - name: clusterUser_mm1st28n5mwxajfy_ghug5zn2qxcd6uuc
+            user:
+              exec:
+                apiVersion: client.authentication.k8s.io/v1beta1
+                command: kubelogin
+                args: [get-token, --environment, AzurePublicCloud, --server-id, 6dae42f8-4368-4678-94ff-3960e28e3630, --client-id, 80faf920-1908-4b52-b5ef-a8e7bedfc67a, --tenant-id, a84894e7-87c5-40e3-9783-320d0334b3cc, --login, azurecli]
+    metadata:
+      description: "Internal-only mathom team workloads in Azure. Requires MCG-MATHOM-PRIMARY-CLUSTER-ADMINS-SG membership."
+      keywords: [prod, production, mathom, azure, flyte, aks]
+      provider: azure
+      region: westus2
+      resource_group: mm1st28n5mwxajfy
+      subscription: "45ee5d37-dd7d-42dc-84d7-5c2c4aba7e1a"

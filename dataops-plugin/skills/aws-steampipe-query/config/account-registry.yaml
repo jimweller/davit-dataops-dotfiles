@@ -1,0 +1,47 @@
+# AWS Account Registry
+#
+# Source of truth for known AWS accounts.
+# Users configure which accounts to enable via ~/.dataops-assistant/aws/accounts.yaml
+#
+# Source: ~/code/ds-services/mcg-dss-aws-infra/accnts/account_ids.yaml
+
+accounts:
+  - name: security
+    account_id: "321441910708"
+    description: "Security account"
+
+  - name: shared-infra-dev
+    account_id: "106388581530"
+    description: "Shared infrastructure (dev)"
+
+  - name: dss-common-dev
+    account_id: "159625199976"
+    description: "DSS common development"
+
+  - name: build
+    account_id: "959940652052"
+    description: "Build/CI account"
+
+  - name: dss-common-prod
+    account_id: "492132060394"
+    description: "DSS common production"
+
+  - name: management
+    account_id: "808565370955"
+    description: "Management account"
+
+  - name: dss-sandbox
+    account_id: "622191734775"
+    description: "DSS sandbox/experimentation"
+
+  - name: legacy-mcghealth
+    account_id: "866954699517"
+    description: "Legacy MCG Health account"
+
+  - name: quansight
+    account_id: "502435701988"
+    description: "Quansight account"
+
+  - name: hearst-bedrock
+    account_id: "493888979299"
+    description: "Hearst Bedrock account"

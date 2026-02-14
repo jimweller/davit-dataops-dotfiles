@@ -1,0 +1,35 @@
+# User overrides for k8s-steampipe and k8s-logs skills
+# Copy to: ~/.dataops-assistant/k8s/clusters.yaml
+#
+# This file overrides/extends the shipped cluster-registry.yaml.
+# Each entry matches by anchor name and merges with shipped defaults.
+#
+# Run bootstrap after editing:
+#   ./skills/k8s-steampipe/scripts/bootstrap.sh
+
+clusters:
+  # EKS cluster - provide your aws-vault profile for auth
+  - anchor: dss-eks-platform-dev
+    kubeconfig:
+      override:
+        users:
+          - name: arn:aws:eks:us-west-2:123456789012:cluster/dss-eks-platform-dev
+            user:
+              exec:
+                apiVersion: client.authentication.k8s.io/v1beta1
+                command: aws-vault
+                args: [exec, your_aws_vault_profile, --, aws, eks, get-token, --region, us-west-2, --cluster-name, dss-eks-platform-dev, --output, json]
+
+  # AKS cluster - use kubelogin with azurecli
+  - anchor: my-aks-cluster
+    kubeconfig:
+      # obtain command writes kubeconfig YAML to stdout
+      obtain: [az, aks, get-credentials, --name, my-cluster-name, --resource-group, my-rg, --subscription, my-subscription, --file, -]
+      override:
+        users:
+          - name: clusterUser_my-rg_my-cluster-name
+            user:
+              exec:
+                apiVersion: client.authentication.k8s.io/v1beta1
+                command: kubelogin
+                args: [get-token, --environment, AzurePublicCloud, --server-id, 6dae42f8-4368-4678-94ff-3960e28e3630, --client-id, 80faf920-1908-4b52-b5ef-a8e7bedfc67a, --tenant-id, your-tenant-id, --login, azurecli]

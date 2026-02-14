@@ -1,0 +1,7 @@
+#!/bin/bash
+set -e
+BASEDIR="$(cd "$(dirname "$0")" && pwd)"
+if [ ! -d "${BASEDIR}/dotbot" ]; then
+    git clone --depth 1 https://github.com/anishathalye/dotbot "${BASEDIR}/dotbot"
+fi
+"${BASEDIR}/dotbot/bin/dotbot" -d "${BASEDIR}" -c install.conf.yaml

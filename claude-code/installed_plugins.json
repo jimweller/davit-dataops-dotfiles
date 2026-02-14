@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "plugins": {
+    "gopls-lsp@claude-plugins-official": [
+      {
+        "scope": "local",
+        "projectPath": "/home/vscode/tmp/_claude",
+        "installPath": "/home/vscode/.claude/plugins/cache/claude-plugins-official/gopls-lsp/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2025-12-29T06:47:45.642Z",
+        "lastUpdated": "2025-12-29T06:47:45.642Z"
+      }
+    ]
+  }
+}

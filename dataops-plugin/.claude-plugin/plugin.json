@@ -1,0 +1,66 @@
+{
+  "name": "dataops-assistant",
+  "version": "0.1.0",
+  "description": "Research internal sources (Confluence, Jira, ADO, PagerDuty) and infrastructure (Kubernetes, Azure) with context-managed sub-agents.",
+  "author": {
+    "name": "DataOps Team"
+  },
+  "repository": "https://dev.azure.com/company/dataops/_git/dataops-assistant-plugin",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/bootstrap.sh",
+            "timeout": 5,
+            "description": "Bootstrap plugin environment"
+          },
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/sync-arch-memory-hook.sh",
+            "timeout": 60,
+            "description": "Sync architectural memory repos from ADO"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/inject-routing-rules.sh",
+            "timeout": 5,
+            "description": "Inject routing rules before every prompt"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/approve-api-scripts.sh",
+            "timeout": 5,
+            "description": "Auto-approve plugin scripts in skills/ and hooks/ directories"
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/require-advisor-tool-calls.sh",
+            "timeout": 10,
+            "description": "Require advisor agents to call search/list tools before returning results"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "numStartups": 0,
+  "installMethod": "",
+  "autoUpdates": true,
+  "theme": "dark-daltonized",
+  "preferredNotifChannel": "notifications_disabled",
+  "hasSeenTasksHint": true,
+  "tipsHistory": {},
+  "memoryUsageCount": 0,
+  "promptQueueUseCount": 0,
+  "showExpandedTodos": true,
+  "autoConnectIde": true,
+  "autoInstallIdeExtension": false,
+  "terminalProgressBarEnabled": false,
+  "cachedStatsigGates": {},
+  "cachedDynamicConfigs": {},
+  "shiftEnterKeyBindingInstalled": true,
+  "hasCompletedOnboarding": true,
+  "subscriptionNoticeCount": 0,
+  "hasAvailableSubscription": false,
+  "changelogLastFetched": 0,
+  "bypassPermissionsModeAccepted": true,
+  "hasAcknowledgedCostThreshold": true,
+  "isQualifiedForDataSharing": false,
+  "projects": {},
+  "firstStartTime": "",
+  "userID": "",
+  "lastReleaseNotesSeen": "",
+  "mcpServers": {
+    "c7": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp",
+        "--api-key",
+        "${CONTEXT7_KEY}"
+      ],
+      "env": {
+        "DEFAULT_MINIMUM_TOKENS": "10000"
+      }
+    },
+    "g": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "github:zoharbabin/google-research-mcp"
+      ],
+      "env": {
+        "GOOGLE_CUSTOM_SEARCH_API_KEY": "${GOOGLE_SEARCH_API_KEY}",
+        "GOOGLE_CUSTOM_SEARCH_ID": "${GOOGLE_SEARCH_ID}",
+        "GOOGLE_GEMINI_API_KEY": "${GOOGLE_GEMINI_API_KEY}"
+      }
+    },
+    "atl": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": [
+        "--python",
+        "python3.10",
+        "/Users/jimweller/tmp/mcp-atlassian",
+        "-v"
+      ],
+      "env": {
+        "CONFLUENCE_URL": "${CONFLUENCE_URL}",
+        "CONFLUENCE_USERNAME": "${JIRA_USERNAME}",
+        "CONFLUENCE_API_TOKEN": "${CONFLUENCE_API_TOKEN}",
+        "JIRA_URL": "${JIRA_URL}",
+        "JIRA_USERNAME": "${JIRA_USERNAME}",
+        "JIRA_API_TOKEN": "${JIRA_API_TOKEN}"
+      }
+    },
+    "azure-devops": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@anthropic-ai/azure-devops-mcp",
+        "mcgsead"
+      ],
+      "env": {
+        "AZURE_DEVOPS_EXT_PAT": "${AZURE_DEVOPS_EXT_PAT}"
+      }
+    },
+    "atlassian": {
+      "type": "http",
+      "url": "https://mcp.atlassian.com/v1/mcp"
+    }
+  },
+  "hasIdeOnboardingBeenShown": {
+    "vscode": true
+  },
+  "iterm2SetupInProgress": false,
+  "iterm2BackupPath": "",
+  "hasOpusPlanDefault": false,
+  "sonnet45MigrationComplete": false,
+  "hasUsedBackslashReturn": true,
+  "lastPlanModeUse": 0,
+  "hasIdeAutoConnectDialogBeenShown": true,
+  "githubRepoPaths": {},
+  "opus45MigrationComplete": false,
+  "thinkingMigrationComplete": false,
+  "officialMarketplaceAutoInstallAttempted": false,
+  "officialMarketplaceAutoInstalled": false,
+  "skillUsage": {},
+  "opusProMigrationComplete": false,
+  "cachedChromeExtensionInstalled": false,
+  "autoUpdatesProtectedForNative": false,
+  "clientDataCache": {
+    "data": null,
+    "timestamp": 0
+  }
+}

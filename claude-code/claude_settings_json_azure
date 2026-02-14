@@ -1,0 +1,36 @@
+{
+  "cleanupPeriodDays": 90,
+  "env": {
+    "CLAUDE_CODE_USE_FOUNDRY": "1",
+    "CLAUDE_CODE_USE_BEDROCK": "0",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "claude-opus-4-6",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "claude-sonnet-4-5",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "claude-haiku-4-5",
+    "ANTHROPIC_MODEL": "claude-opus-4-6",
+    "CLAUDE_CODE_SUBAGENT_MODEL": "claude-sonnet-4-5",
+    "CLAUDE_CODE_IDE_SKIP_AUTO_INSTALL": "true",
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "true",
+    "ENABLE_TOOL_SEARCH": "auto:1",
+    "CLAUDE_CODE_SHELL": "bash",
+    "DISABLE_COST_WARNINGS": "1",
+    "DISABLE_BUG_COMMAND": "1",
+    "DISABLE_ERROR_REPORTING": "1",
+    "DISABLE_NON_ESSENTIAL_MODEL_CALLS": "1",
+    "DISABLE_TELEMETRY": "1"
+  },
+  "includeCoAuthoredBy": false,
+  "model": "sonnet",
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline-command.sh azure"
+  },
+  "spinnerTipsEnabled": false,
+  "spinnerVerbs": {
+    "mode": "replace",
+    "verbs": [
+      "Working"
+    ]
+  },
+  "autoUpdatesChannel": "latest",
+  "prefersReducedMotion": true
+}

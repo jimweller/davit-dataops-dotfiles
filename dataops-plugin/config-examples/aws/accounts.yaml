@@ -1,0 +1,29 @@
+# AWS account to profile mappings for aws-steampipe-query skill
+# Copy to: ~/.dataops-assistant/aws/accounts.yaml
+#
+# Maps account names (from shipped registry) to your local AWS profiles.
+# Profiles should use credential_process to call aws-vault.
+#
+# Prerequisites:
+# 1. Configure aws-vault with your profiles
+# 2. Add profiles to ~/.aws/config with credential_process:
+#
+#    [profile sp_my_account]
+#    credential_process = aws-vault exec my_aws_vault_profile --json
+#
+# Run bootstrap after editing:
+#   ./skills/aws-steampipe-query/scripts/bootstrap.sh
+
+accounts:
+  # Development account
+  - name: dss-common-dev
+    profile: sp_dss_common_dev
+
+  # Production account
+  - name: dss-common-prod
+    profile: sp_dss_common_prod
+
+  # Optional: limit to specific regions (default is all)
+  # - name: security
+  #   profile: sp_security
+  #   regions: [us-west-2, us-east-1]

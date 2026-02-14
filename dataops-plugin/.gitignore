@@ -1,0 +1,23 @@
+# Work directory for file-based page editing
+/work/
+
+# OS files
+.DS_Store
+
+# Editor files
+*.swp
+*.swo
+*~
+
+# Test artifacts
+*.log
+tests/.test-results/
+.test-fixtures/
+
+# Claude local settings (hooks, settings are per-developer)
+.claude/*
+!.claude/rules/
+!.claude/agents/
+
+# Personal dev instructions
+CLAUDE.local.md

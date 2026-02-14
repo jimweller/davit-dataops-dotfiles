@@ -1,0 +1,9 @@
+[submodule "memory/general-memory"]
+	path = memory/general-memory
+	url = mcgsead@vs-ssh.visualstudio.com:v3/mcgsead/Platform%20Engineering/general-memory
+[submodule "memory/bash-memory"]
+	path = memory/bash-memory
+	url = mcgsead@vs-ssh.visualstudio.com:v3/mcgsead/Platform%20Engineering/bash-memory
+[submodule "memory/make-memory"]
+	path = memory/make-memory
+	url = mcgsead@vs-ssh.visualstudio.com:v3/mcgsead/Platform%20Engineering/make-memory

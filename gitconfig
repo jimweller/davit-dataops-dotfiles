@@ -1,0 +1,62 @@
+[user]
+	name = Jim Weller
+	email = jim.weller@mcg.com
+[credential]
+	helper = "!f() { echo username=$GIT_USERNAME; echo password=$AZURE_DEVOPS_EXT_PAT; }; f"
+[credential "https://dev.azure.com"]
+	useHttpPath = true
+[core]
+	whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+	pager =
+	filemode = false
+[init]
+	defaultBranch = main
+[rerere]
+	enabled = true
+[pager]
+	branch = false
+[commit]
+	gpgsign = false
+[url "https://dev.azure.com/mcgsead/Data%20Engineering/_git/"]
+	insteadOf = mcgsead@vs-ssh.visualstudio.com:v3/mcgsead/Data%20Engineering/
+	insteadOf = ssh://mcgsead@vs-ssh.visualstudio.com/v3/mcgsead/Data%20Engineering/
+	insteadOf = git@ssh.dev.azure.com:v3/mcgsead/Data%20Engineering/
+[url "https://dev.azure.com/mcgsead/Data%20Science/_git/"]
+	insteadOf = mcgsead@vs-ssh.visualstudio.com:v3/mcgsead/Data%20Science/
+	insteadOf = ssh://mcgsead@vs-ssh.visualstudio.com/v3/mcgsead/Data%20Science/
+	insteadOf = git@ssh.dev.azure.com:v3/mcgsead/Data%20Science/
+[url "https://dev.azure.com/mcgsead/Hermione/_git/"]
+	insteadOf = mcgsead@vs-ssh.visualstudio.com:v3/mcgsead/Hermione/
+	insteadOf = ssh://mcgsead@vs-ssh.visualstudio.com/v3/mcgsead/Hermione/
+	insteadOf = git@ssh.dev.azure.com:v3/mcgsead/Hermione/
+[url "https://dev.azure.com/mcgsead/Mathom/_git/"]
+	insteadOf = mcgsead@vs-ssh.visualstudio.com:v3/mcgsead/Mathom/
+	insteadOf = ssh://mcgsead@vs-ssh.visualstudio.com/v3/mcgsead/Mathom/
+	insteadOf = git@ssh.dev.azure.com:v3/mcgsead/Mathom/
+[url "https://dev.azure.com/mcgsead/MCG%20Base/_git/"]
+	insteadOf = mcgsead@vs-ssh.visualstudio.com:v3/mcgsead/MCG%20Base/
+	insteadOf = ssh://mcgsead@vs-ssh.visualstudio.com/v3/mcgsead/MCG%20Base/
+	insteadOf = git@ssh.dev.azure.com:v3/mcgsead/MCG%20Base/
+[url "https://dev.azure.com/mcgsead/MCG%20DevOps/_git/"]
+	insteadOf = mcgsead@vs-ssh.visualstudio.com:v3/mcgsead/MCG%20DevOps/
+	insteadOf = ssh://mcgsead@vs-ssh.visualstudio.com/v3/mcgsead/MCG%20DevOps/
+	insteadOf = git@ssh.dev.azure.com:v3/mcgsead/MCG%20DevOps/
+[url "https://dev.azure.com/mcgsead/Platform%20Engineering/_git/"]
+	insteadOf = mcgsead@vs-ssh.visualstudio.com:v3/mcgsead/Platform%20Engineering/
+	insteadOf = ssh://mcgsead@vs-ssh.visualstudio.com/v3/mcgsead/Platform%20Engineering/
+	insteadOf = git@ssh.dev.azure.com:v3/mcgsead/Platform%20Engineering/
+[url "https://dev.azure.com/mcgsead/SysOps%20Infrastructure/_git/"]
+	insteadOf = mcgsead@vs-ssh.visualstudio.com:v3/mcgsead/SysOps%20Infrastructure/
+	insteadOf = ssh://mcgsead@vs-ssh.visualstudio.com/v3/mcgsead/SysOps%20Infrastructure/
+	insteadOf = git@ssh.dev.azure.com:v3/mcgsead/SysOps%20Infrastructure/
+[url "https://dev.azure.com/mcgsead/tooling/_git/"]
+	insteadOf = mcgsead@vs-ssh.visualstudio.com:v3/mcgsead/tooling/
+	insteadOf = ssh://mcgsead@vs-ssh.visualstudio.com/v3/mcgsead/tooling/
+	insteadOf = git@ssh.dev.azure.com:v3/mcgsead/tooling/
+[url "https://dev.azure.com/mcgsead/UX%20Engineering/_git/"]
+	insteadOf = mcgsead@vs-ssh.visualstudio.com:v3/mcgsead/UX%20Engineering/
+	insteadOf = ssh://mcgsead@vs-ssh.visualstudio.com/v3/mcgsead/UX%20Engineering/
+	insteadOf = git@ssh.dev.azure.com:v3/mcgsead/UX%20Engineering/
+[url "https://dev.azure.com/mcgsead/"]
+	insteadOf = https://mcgsead.visualstudio.com/DefaultCollection/
+	insteadOf = https://mcgsead.visualstudio.com/

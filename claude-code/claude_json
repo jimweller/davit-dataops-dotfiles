@@ -40,43 +40,12 @@
         "DEFAULT_MINIMUM_TOKENS": "10000"
       }
     },
-    "g": {
-      "type": "stdio",
-      "command": "npx",
-      "args": [
-        "-y",
-        "github:zoharbabin/google-research-mcp"
-      ],
-      "env": {
-        "GOOGLE_CUSTOM_SEARCH_API_KEY": "${GOOGLE_SEARCH_API_KEY}",
-        "GOOGLE_CUSTOM_SEARCH_ID": "${GOOGLE_SEARCH_ID}",
-        "GOOGLE_GEMINI_API_KEY": "${GOOGLE_GEMINI_API_KEY}"
-      }
-    },
-    "atl": {
-      "type": "stdio",
-      "command": "uvx",
-      "args": [
-        "--python",
-        "python3.10",
-        "/Users/jimweller/tmp/mcp-atlassian",
-        "-v"
-      ],
-      "env": {
-        "CONFLUENCE_URL": "${CONFLUENCE_URL}",
-        "CONFLUENCE_USERNAME": "${JIRA_USERNAME}",
-        "CONFLUENCE_API_TOKEN": "${CONFLUENCE_API_TOKEN}",
-        "JIRA_URL": "${JIRA_URL}",
-        "JIRA_USERNAME": "${JIRA_USERNAME}",
-        "JIRA_API_TOKEN": "${JIRA_API_TOKEN}"
-      }
-    },
     "azure-devops": {
       "type": "stdio",
       "command": "npx",
       "args": [
         "-y",
-        "@anthropic-ai/azure-devops-mcp",
+        "@azure-devops/mcp",
         "mcgsead"
       ],
       "env": {
